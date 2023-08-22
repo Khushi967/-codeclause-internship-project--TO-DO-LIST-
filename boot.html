@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+li:hover {
+    background-color: #f9f9f9;
+}
+
+.completed-skill {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.delete-skill {
+    cursor: pointer;
+    visibility: hidden;
+    margin-left: 10px;
+}
+
+li:hover .delete-skill {
+    visibility: visible;
+}
+
+    </style>
+    <title>Skill Development To-Do List</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Skill Development To-Do List</h1>
+        <div class="input-group mb-3">
+            <input type="text" id="skillInput" class="form-control" placeholder="Enter a skill...">
+            <div class="input-group-append">
+                <button class="btn btn-success" onclick="addSkill()">Add</button>
+            </div>
+        </div>
+        <ul id="skillList" class="list-group"></ul>
+    </div>
+
+    <!-- Add Bootstrap JavaScript (Popper.js and jQuery are required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

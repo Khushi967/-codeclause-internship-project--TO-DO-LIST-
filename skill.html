@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    .skill-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        transition: all 0.2s ease;
+    }
+    
+    li:hover {
+        background-color: #f9f9f9;
+    }
+    
+    .completed-skill {
+        text-decoration: line-through;
+        color: #999;
+    }
+    
+    .delete-skill {
+        cursor: pointer;
+        visibility: hidden;
+        margin-left: 10px;
+    }
+    
+    li:hover .delete-skill {
+        visibility: visible;
+    }
+    </style>
+    <title>Skill Development To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <script>function addSkill() {
+        var skillInput = document.getElementById("skillInput");
+        var skillList = document.getElementById("skillList");
+        var skillText = skillInput.value.trim();
+    
+        if (skillText !== "") {
+            var newSkill = document.createElement("li");
+            newSkill.innerHTML = `
+                <span class="skill-text">${skillText}</span>
+                <span class="delete-skill" onclick="deleteSkill(this)">🗑️</span>
+            `;
+            skillList.appendChild(newSkill);
+            skillInput.value = "";
+        }
+    }
+    
+    function deleteSkill(deleteIcon) {
+        var skillItem = deleteIcon.parentNode;
+        skillItem.remove();
+    }
+    
+    document.getElementById("skillInput").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            addSkill();
+        }
+    });
+    
+    document.getElementById("skillList").addEventListener("click", function(event) {
+        var targetElement = event.target;
+        if (targetElement.classList.contains("skill-text")) {
+            targetElement.classList.toggle("completed-skill");
+        }
+    });
+    </script>
+    <h1>Skill Development To-Do List</h1>
+    <div class="skill-container">
+        <input type="text" id="skillInput" placeholder="Enter a skill...">
+        <button onclick="addSkill()">Add</button>
+    </div>
+    <ul id="skillList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
